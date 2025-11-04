@@ -32,6 +32,8 @@ class Usuario {
     + listarSeguindo() : void
     + listarSeguidores() : void
     + adicionarAvaliacao(a: Avaliacao*) : void
+    + removerAvaliacao(a: Avaliacao*) : void
+    + getAvaliacoes() : vector<Avaliacao*>
     + criarLista(nome: string) : void
     + curtirAvaliacao(a: Avaliacao*) : void
     + mostrarPerfil() : void
@@ -70,6 +72,7 @@ class Musica {
     + getTitulo() : string
     + getArtista() : Artista*
     + adicionarAvaliacao(a: Avaliacao*) : void
+    + removerAvaliacao(a: Avaliacao*) : void
     + calcularMedia() : float
     + mostrarInfo() : void
 }
@@ -89,10 +92,13 @@ class Avaliacao {
 }
 
 class AvaliacaoComDestaque {
-    - curtidas : int
-    + AvaliacaoComDestaque(autor: Usuario*, musica: Musica*, nota: int, comentario: string, curtidas: int=0)
-    + curtir() : void
+    - curtidasPor : vector<string>
+    + AvaliacaoComDestaque(autor: Usuario*, musica: Musica*, nota: int, comentario: string, curtidasPor: vector<string> = {})
+    + curtir(usuario: Usuario*) : void
+    + descurtir(usuario: Usuario*) : void
+    + jaCurtiu(email: string) : bool
     + getCurtidas() : int
+    + getCurtidasPor() : vector<string>
     + mostrarAvaliacao() : void
 }
 

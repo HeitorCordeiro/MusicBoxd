@@ -25,9 +25,12 @@ public:
     Musica(string titulo, string genero, float duracao, Artista* artista, string album, int ano, string capa, vector<string> plataformas);
     string getTitulo();
     Artista* getArtista();
+    void setTitulo(const string& novoTitulo);
     void adicionarAvaliacao(Avaliacao* avaliacao);
+    void removerAvaliacao(Avaliacao* avaliacao);
     float calcularMedia();
     void mostrarInfo();
+    const vector<Avaliacao*>& getAvaliacoes() const;
 
 };
 

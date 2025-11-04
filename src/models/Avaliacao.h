@@ -19,10 +19,19 @@ protected:
     time_t dataCriacao;
 public:
     Avaliacao(Usuario* autor, Musica* musica, int nota, string comentario);
+    // getComentario: retorna o texto do comentário (se houver)
     int getNota();
+    string getComentario();
+    Usuario* getAutor();
+    Musica* getMusica();
     bool isOculto();
     void ocultar();
+    void revelar();
     virtual void mostrarAvaliacao();
+    virtual void mostrarAvaliacaoAdmin();
+    // permitir edição de nota/comentário
+    void setComentario(const string& c);
+    void setNota(int n);
     virtual ~Avaliacao() = default;
 
 };

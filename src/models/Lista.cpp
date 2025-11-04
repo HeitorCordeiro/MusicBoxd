@@ -6,13 +6,16 @@ using namespace std;
 
 Lista::Lista(string nome)
     : nome(nome) {
-    // implementação 
+    // implementação mínima
 }
 
 void Lista::adicionarMusica(Musica* musica) {
-    // implementação 
+    musicas.push_back(musica);
 }
 
 void Lista::mostrarLista() {
-    // implementação 
+    cout << "Lista: " << nome << endl;
+    for (size_t i = 0; i < musicas.size(); ++i) {
+        cout << " - " << (musicas[i] ? musicas[i]->getTitulo() : string("<desconhecida>")) << endl;
+    }
 }
