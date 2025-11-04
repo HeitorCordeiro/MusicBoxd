@@ -3,19 +3,31 @@
 
 using namespace std;
 
+// Construtor: inicializa a avaliação base e define o número inicial de curtidas
 AvaliacaoComDestaque::AvaliacaoComDestaque(Usuario* autor, Musica* musica, int nota, string comentario, int curtidas)
-    : Avaliacao(autor, musica, nota, comentario), curtidas(curtidas) {
-    // implementação
-}
+    : Avaliacao(autor, musica, nota, comentario), curtidas(curtidas) {}
 
+// Incrementa o contador de curtidas da avaliação
 void AvaliacaoComDestaque::curtir() {
-    // implementação
+    curtidas++;
 }
 
+// Retorna o número de curtidas
 int AvaliacaoComDestaque::getCurtidas() {
-   // implementação 
+    return curtidas;
 }
 
+// Exibe a avaliação completa, com curtidas e informações herdadas
 void AvaliacaoComDestaque::mostrarAvaliacao() {
-    // implementação
+    if (oculto) {
+        cout << "[AVALIAÇÃO COM DESTAQUE OCULTA]" << endl;
+        return;
+    }
+
+    // Chama a exibição padrão da classe base
+    Avaliacao::mostrarAvaliacao();
+
+    // Mostra as curtidas adicionais
+    cout << "Curtidas: " << curtidas << endl;
+    cout << "---------------------------" << endl;
 }
