@@ -2,9 +2,11 @@
 #include "Usuario.h"
 #include "Musica.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
+// Construtor: inicializa todos os campos da avaliação, definindo data atual e oculto como falso
 Avaliacao::Avaliacao(Usuario* autor, Musica* musica, int nota, string comentario)
     : autor(autor), musica(musica), nota(nota), comentario(comentario), oculto(false) {
     dataCriacao = time(nullptr);
@@ -16,6 +18,7 @@ Avaliacao::Avaliacao(Usuario* autor, Musica* musica, int nota, string comentario
     else if (this->nota > 5) this->nota = 5;
 }
 
+// Retorna a nota atribuída à música
 int Avaliacao::getNota() {
     return nota;
 }
@@ -24,10 +27,12 @@ string Avaliacao::getComentario() {
     return comentario;
 }
 
+// Retorna verdadeiro se a avaliação estiver marcada como oculta
 bool Avaliacao::isOculto() {
     return oculto;
 }
 
+// Marca a avaliação como oculta, impedindo que seja exibida
 void Avaliacao::ocultar() {
     oculto = true;
 }
@@ -44,6 +49,12 @@ Musica* Avaliacao::getMusica() {
     return musica;
 }
 
+// Retorna o ponteiro da música associada à avaliação
+Musica* Avaliacao::getMusica() {
+    return musica;
+}
+
+// Exibe as informações da avaliação no console, incluindo autor, nota e data
 void Avaliacao::mostrarAvaliacao() {
     if (oculto) {
         cout << "[Avaliação oculta]" << endl;

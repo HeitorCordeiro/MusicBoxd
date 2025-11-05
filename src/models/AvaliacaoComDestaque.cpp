@@ -54,6 +54,7 @@ const std::vector<string>& AvaliacaoComDestaque::getCurtidasPor() const{
     return curtidasPor;
 }
 
+// Exibe a avaliação completa, com curtidas e informações herdadas
 void AvaliacaoComDestaque::mostrarAvaliacao() {
     if (isOculto()) {
         cout << "[Avaliação oculta]" << endl;

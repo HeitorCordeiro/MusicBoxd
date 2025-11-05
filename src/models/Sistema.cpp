@@ -1,5 +1,5 @@
+
 #include "Sistema.h"
-#include "Usuario.h"
 #include "Artista.h"
 #include "Musica.h"
 #include "Avaliacao.h"
@@ -10,7 +10,7 @@
 #include <sstream>
 #include <cctype>
 
-using namespace std;
+// Implementação dos métodos da classe Sistema
 
 // Implementação central do domínio: a classe Sistema coordena usuários,
 // músicas, artistas e avaliações. Operações de busca e modificação de

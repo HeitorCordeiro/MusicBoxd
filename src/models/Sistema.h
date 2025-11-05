@@ -1,4 +1,4 @@
-// Arquivo: Sistema.h
+
 #ifndef SISTEMA_H
 #define SISTEMA_H
 
@@ -11,12 +11,13 @@ class Musica;
 class Artista;
 class Avaliacao;
 
+// Classe responsável por gerenciar o sistema musical
 class Sistema {
 private:
-    vector<Usuario*> usuarios;
-    vector<Musica*> musicas;
-    vector<Artista*> artistas;
+    std::vector<Musica*> musicas; // Lista de músicas cadastradas
+    std::vector<Artista*> artistas; // Lista de artistas cadastrados
 public:
+    // Construtor e destrutor
     Sistema();
     void cadastrarUsuario(string nome, string email);
     void cadastrarArtista(string nome, string genero);
@@ -38,6 +39,8 @@ public:
     void setStatusUsuario(const string& email, const string& status);
     void ensureAdminExists();
 
+    // Lista todas as músicas cadastradas
+    void listarMusicas() const;
 };
 
 #endif // SISTEMA_H

@@ -1,4 +1,3 @@
-// Arquivo: AvaliacaoComDestaque.h
 #ifndef AVALIACAO_COM_DESTAQUE_H
 #define AVALIACAO_COM_DESTAQUE_H
 
@@ -6,6 +5,7 @@
 #include <vector>
 using namespace std;
 
+// Classe derivada que representa uma avaliação com destaque, permitindo curtidas
 class AvaliacaoComDestaque : public Avaliacao {
 private:
     std::vector<string> curtidasPor;
