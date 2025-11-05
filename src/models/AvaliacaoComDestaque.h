@@ -8,14 +8,11 @@ using namespace std;
 
 class AvaliacaoComDestaque : public Avaliacao {
 private:
-    // lista de emails dos usuarios que curtiram esta avaliacao
     std::vector<string> curtidasPor;
 public:
     AvaliacaoComDestaque(Usuario* autor, Musica* musica, int nota, string comentario, const std::vector<string>& curtidasPor = std::vector<string>());
-    // curte a avaliacao pelo usuario (previne curtida duplicada)
     void curtir(Usuario* usuario);
     void descurtir(Usuario* usuario);
-    // retorna numero de curtidas
     int getCurtidas();
     const std::vector<string>& getCurtidasPor() const;
     bool jaCurtiu(const string& email) const;

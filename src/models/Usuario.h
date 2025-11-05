@@ -22,10 +22,10 @@ private:
     size_t senhaHash;
 public:
     Usuario(string nome, string email, bool admin=false);
-    // password helpers
+
     void setSenha(const string& senha);
     bool verificarSenha(const string& senha) const;
-    // persistence helpers (simple file format)
+
     string toStorageLine() const;
     static vector<Usuario*> carregarUsuarios(const string& caminho);
     static void salvarUsuarios(const string& caminho, const vector<Usuario*>& usuarios);
@@ -44,7 +44,7 @@ public:
     void criarLista(string nomeLista);
     void curtirAvaliacao(Avaliacao* avaliacao);
     void mostrarPerfil();
-    // admin helpers
+
     bool isAdmin() const;
     void setAdmin(bool v);
     void setStatus(const string& s);
