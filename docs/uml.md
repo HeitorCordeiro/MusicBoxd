@@ -10,19 +10,6 @@ class Sistema {
     + cadastrarArtista(nome: string, genero: string) : void
     + cadastrarMusica(titulo: string, genero: string, duracao: float, album: string, ano: int, capa: string, plataformas: vector<string>, artistaNome: string) : void
     + listarMusicas() : void
-    + getMusicas() : vector<Musica*>&
-    + encontrarMusicaPorTitulo(titulo: string) : Musica*
-    + editarMusicaTitulo(tituloAtual: string, novoTitulo: string) : void
-    + removerMusica(titulo: string) : void
-    + removerArtista(nome: string) : void
-    + editarArtistaNome(nomeAtual: string, novoNome: string) : void
-    + salvarSistema(caminho: string) : void
-    + carregarSistema(caminho: string) : void
-    + ensureAdminExists() : void
-    + adicionarAvaliacao(autor: Usuario*, tituloMusica: string, nota: int, comentario: string, destaque: bool) : void
-    + getAvaliacoesOcultas() : vector<Avaliacao*>
-    + suspenderUsuario(email: string, motivo: string) : void
-    + setStatusUsuario(email: string, status: string) : void
 }
 
 class Usuario {
@@ -35,28 +22,19 @@ class Usuario {
     - seguidores : vector<Usuario*>
     - avaliacoes : vector<Avaliacao*>
     - listas : vector<Lista*>
-    - senhaHash : size_t
     + Usuario(nome: string, email: string, admin: bool=false)
     + getNome() : string
     + getEmail() : string
     + getStatus() : string
-    + setSenha(senha: string) : void
-    + verificarSenha(senha: string) : bool
-    + hasPassword() : bool
     + suspender(motivo: string) : void
     + adicionarAviso(msg: string) : void
     + seguir(outro: Usuario*) : void
     + listarSeguindo() : void
     + listarSeguidores() : void
     + adicionarAvaliacao(a: Avaliacao*) : void
-    + removerAvaliacao(a: Avaliacao*) : void
-    + getAvaliacoes() : vector<Avaliacao*>
     + criarLista(nome: string) : void
     + curtirAvaliacao(a: Avaliacao*) : void
     + mostrarPerfil() : void
-    + isAdmin() : bool
-    + setAdmin(v: bool) : void
-    + setStatus(s: string) : void
 }
 
 class Lista {
@@ -74,10 +52,8 @@ class Artista {
     + Artista(nome: string, genero: string)
     + getNome() : string
     + getGenero() : string
-    + setNome(novoNome: string) : void
     + adicionarMusica(m: Musica*) : void
     + listarMusicas() : void
-    + removerMusica(m: Musica*) : void
 }
 
 class Musica {
@@ -93,12 +69,9 @@ class Musica {
     + Musica(titulo: string, genero: string, duracao: float, artista: Artista*, album: string, ano: int, capa: string, plataformas: vector<string>)
     + getTitulo() : string
     + getArtista() : Artista*
-    + setTitulo(novoTitulo: string) : void
     + adicionarAvaliacao(a: Avaliacao*) : void
-    + removerAvaliacao(a: Avaliacao*) : void
     + calcularMedia() : float
     + mostrarInfo() : void
-    + getAvaliacoes() : vector<Avaliacao*>
 }
 
 class Avaliacao {
@@ -111,26 +84,16 @@ class Avaliacao {
     + Avaliacao(autor: Usuario*, musica: Musica*, nota: int, comentario: string)
     + getNota() : int
     + isOculto() : bool
-    + getComentario() : string
-    + getAutor() : Usuario*
-    + getMusica() : Musica*
     + ocultar() : void
     + mostrarAvaliacao() : void
-    + mostrarAvaliacaoAdmin() : void
-    + setComentario(c: string) : void
-    + setNota(n: int) : void
 }
 
 class AvaliacaoComDestaque {
-    - curtidasPor : vector<string>
-    + AvaliacaoComDestaque(autor: Usuario*, musica: Musica*, nota: int, comentario: string)
-    + curtir(usuario: Usuario*) : void
-    + descurtir(usuario: Usuario*) : void
-    + jaCurtiu(email: string) : bool
+    - curtidas : int
+    + AvaliacaoComDestaque(autor: Usuario*, musica: Musica*, nota: int, comentario: string, curtidas: int=0)
+    + curtir() : void
     + getCurtidas() : int
-    + getCurtidasPor() : vector<string>
     + mostrarAvaliacao() : void
-    + mostrarAvaliacaoAdmin() : void
 }
 
 %% Relações e heranças
@@ -147,6 +110,5 @@ Musica --> Avaliacao : recebe
 Avaliacao <|-- AvaliacaoComDestaque : herança
 
 Lista --> Musica : contém
-
 
 ```

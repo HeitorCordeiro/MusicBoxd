@@ -4,12 +4,8 @@
 
 #include <vector>
 #include <string>
-using namespace std;
-
-class Usuario;
-class Musica;
-class Artista;
-class Avaliacao;
+#include "Musica.h"
+#include "Artista.h"
 
 // Classe responsável por gerenciar o sistema musical
 class Sistema {
@@ -19,25 +15,13 @@ private:
 public:
     // Construtor e destrutor
     Sistema();
-    void cadastrarUsuario(string nome, string email);
-    void cadastrarArtista(string nome, string genero);
-    Artista* encontrarArtistaPorNome(const string& nome);
-    void cadastrarMusica(string titulo, string genero, float duracao, string album, int ano, string capa, vector<string> plataformas, string artistaNome);
-    void listarMusicas();
-    const std::vector<Musica*>& getMusicas() const;
-    void editarMusicaTitulo(const string& tituloAtual, const string& novoTitulo);
-    void removerMusica(const string& titulo);
-    void removerArtista(const string& nome);
-    void editarArtistaNome(const string& nomeAtual, const string& novoNome);
-    void salvarSistema(const string& caminho);
-    void carregarSistema(const string& caminho);
-    Musica* encontrarMusicaPorTitulo(const string& titulo);
-    Usuario* encontrarUsuarioPorEmail(const string& email);
-    void adicionarAvaliacao(Usuario* autor, const string& tituloMusica, int nota, const string& comentario, bool destaque);
-    std::vector<class Avaliacao*> getAvaliacoesOcultas();
-    void suspenderUsuario(const string& email, const string& motivo);
-    void setStatusUsuario(const string& email, const string& status);
-    void ensureAdminExists();
+    ~Sistema();
+
+    // Cadastra um novo artista
+    void cadastrarArtista(std::string nome, std::string genero);
+
+    // Cadastra uma nova música associada a um artista
+    void cadastrarMusica(std::string titulo, std::string genero, float duracao, std::string album, int ano, std::string capa, std::vector<std::string> plataformas, std::string artistaNome);
 
     // Lista todas as músicas cadastradas
     void listarMusicas() const;
